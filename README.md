@@ -1,4 +1,4 @@
-Java Content Security Policy Filter
+Content Security Policy Filter (Java)
 ===========================
 
 Adds the 'Content-Security-Policy' or 'Content-Security-Policy-Report-Only' Header to the response. 
