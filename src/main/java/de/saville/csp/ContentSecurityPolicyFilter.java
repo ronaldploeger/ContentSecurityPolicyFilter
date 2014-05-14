@@ -93,6 +93,8 @@ import org.slf4j.LoggerFactory;
  *            <filter-name>ContentSecurityPolicyFilter</filter-name>
  *             <url-pattern>/*</url-pattern>
  *         </filter-mapping>
+ *         
+ *  @author Ronald Ploeger 
  */
 public class ContentSecurityPolicyFilter implements Filter {
     private static final Logger logger = LoggerFactory.getLogger(ContentSecurityPolicyFilter.class);
