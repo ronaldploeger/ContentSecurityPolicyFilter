@@ -5,10 +5,11 @@ Adds the 'Content-Security-Policy' or 'Content-Security-Policy-Report-Only' Head
 
 Also see: http://content-security-policy.com/ & http://www.w3.org/TR/CSP/#directives
 
-Here is an example full configuration of the ContentSecurityPolicyFilter. 
 Normally you will only need a limited number or none of the init parameters. If no init parameter is defined the Header will look like this:
 
     Content-Security-Policy = default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'
+
+Here is an example full configuration of the ContentSecurityPolicyFilter. 
  
         <filter>
            <filter-name>ContentSecurityPolicyFilter</filter-name>
