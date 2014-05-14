@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+extraProperties=sonar.jdbc.username\=sonar\r\nsonar.host.url\=http\://145.228.124.54\:9000/\r\nsonar.jdbc.driverClassName\=com.mysql.jdbc.Driver\r\nsonar.jdbc.password\=mjheEOLw4_Pq\r\nsonar.jdbc.url\=jdbc\:mysql\://145.228.124.54\:3306/sonar?useUnicode\=true&characterEncoding\=utf8
+projectKey=ContentSecurityPolicyFilter\:ContentSecurityPolicyFilter
+serverUrl=http\://145.228.124.54\:9000
+version=2
