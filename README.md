@@ -7,7 +7,8 @@ Also see: http://content-security-policy.com/ & http://www.w3.org/TR/CSP/#direct
 
 Here is an example full configuration of the ContentSecurityPolicyFilter. 
 Normally you will only need a limited number or none of the init parameters. If no init parameter is defined the Header will look like this:
-Content-Security-Policy = default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'
+
+    Content-Security-Policy = default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'
  
         <filter>
            <filter-name>ContentSecurityPolicyFilter</filter-name>
