@@ -20,9 +20,10 @@ Here is an example full configuration of the ContentSecurityPolicyFilter.
                <param-name>report-only</param-name>
                <param-value>false</param-value>
             </init-param>
+            <!-- Optionally add a reporter-uri -->            
            <init-param>
                <param-name>report-uri</param-name>
-               <param-value>/some-report-uri</param-value>
+               <param-value>/ContentSecurityPolicyReporter</param-value>
             </init-param>
            <init-param>
                <param-name>sandbox</param-name>
@@ -79,3 +80,16 @@ Here is an example full configuration of the ContentSecurityPolicyFilter.
            <filter-name>ContentSecurityPolicyFilter</filter-name>
             <url-pattern>/*</url-pattern>
         </filter-mapping>
+        
+        
+Optionally configure a Servlet to log the CSP violations:    
+    
+         <servlet>
+             <servlet-name>ContentSecurityPolicyReporter</servlet-name>
+             <servlet-class>de.saville.csp.ContentSecurityPolicyReporter</servlet-class>
+         </servlet>
+ 
+         <servlet-mapping>
+             <servlet-name>ContentSecurityPolicyReporter</servlet-name>
+             <url-pattern>/ContentSecurityPolicyReporter</url-pattern>
+         </servlet-mapping>          
