@@ -34,9 +34,10 @@ import org.slf4j.LoggerFactory;
  *                <param-name>report-only</param-name>
  *                <param-value>false</param-value>
  *             </init-param>
+ *            <!-- Optionally add a reporter-uri -->             
  *            <init-param>
  *                <param-name>report-uri</param-name>
- *                <param-value>/some-report-uri</param-value>
+ *                <param-value>/ContentSecurityPolicyReporter</param-value>
  *             </init-param>
  *            <init-param>
  *                <param-name>sandbox</param-name>
