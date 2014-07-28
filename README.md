@@ -3,7 +3,6 @@ Content Security Policy Filter (Java)
 
 Adds the 'Content-Security-Policy' or 'Content-Security-Policy-Report-Only' Header to the response. 
 
-Also see: http://content-security-policy.com/ & http://www.w3.org/TR/CSP/#directives
 Also see: 
  - http://content-security-policy.com/
  - http://www.w3.org/TR/CSP/#directives
