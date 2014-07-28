@@ -4,6 +4,11 @@ Content Security Policy Filter (Java)
 Adds the 'Content-Security-Policy' or 'Content-Security-Policy-Report-Only' Header to the response. 
 
 Also see: http://content-security-policy.com/ & http://www.w3.org/TR/CSP/#directives
+Also see: 
+ - http://content-security-policy.com/
+ - http://www.w3.org/TR/CSP/#directives
+ - https://developer.chrome.com/extensions/contentSecurityPolicy
+ - https://developer.mozilla.org/en-US/docs/Web/Security/CSP
 
 Normally you will only need a limited number or none of the init parameters. If no init parameter is defined the Header will look like this:
 
