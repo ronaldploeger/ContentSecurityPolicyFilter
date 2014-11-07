@@ -15,26 +15,26 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Adds the 'Content-Security-Policy' or 'Content-Security-Policy-Report-Only' Header to the response. 
- * 
+ * Adds the 'Content-Security-Policy' or 'Content-Security-Policy-Report-Only' Header to the response.
+ *
  * Also see: http://content-security-policy.com/ & http://www.w3.org/TR/CSP/#directives
- * 
+ *
  * Normally you will only need a limited number or none of the init parameters. If no init parameter is defined the Header will look like this:
- * 
- *     Content-Security-Policy = default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'
- *     
- * Here is an example full configuration of the ContentSecurityPolicyFilter. 
- *  
+ *
+ *     Content-Security-Policy = default-src 'none'
+ *
+ * Here is an example full configuration of the ContentSecurityPolicyFilter.
+ *
  *     <filter>
  *            <filter-name>ContentSecurityPolicyFilter</filter-name>
  *            <filter-class>de.saville.csp.ContentSecurityPolicyFilter</filter-class>
- *            
+ *
  *            <init-param>
  *                <!-- If not specified the default is false -->
  *                <param-name>report-only</param-name>
  *                <param-value>false</param-value>
  *             </init-param>
- *            <!-- Optionally add a reporter-uri -->             
+ *            <!-- Optionally add a reporter-uri -->
  *            <init-param>
  *                <param-name>report-uri</param-name>
  *                <param-value>/ContentSecurityPolicyReporter</param-value>
@@ -53,49 +53,45 @@ import org.slf4j.LoggerFactory;
  *                <param-value>'none'</param-value>
  *             </init-param>
  *            <init-param>
- *                <!-- If not specified the default is 'self' -->
  *                <param-name>img-src</param-name>
  *                 <param-value>http://*.example.com</param-value>
  *             </init-param>
  *            <init-param>
- *                <!-- If not specified the default is 'self' -->
  *                <param-name>script-src</param-name>
  *                <param-value>'self' js.example.com</param-value>
  *             </init-param>
  *            <init-param>
- *                <!-- If not specified the default is 'self' -->
  *                <param-name>style-src</param-name>
  *                <param-value>'self'</param-value>
- *             </init-param>  
+ *             </init-param>
  *            <init-param>
- *                <!-- If not specified the default is 'self' -->
  *                <param-name>connect-src</param-name>
  *                <param-value>'self'</param-value>
- *             </init-param> 
+ *             </init-param>
  *            <init-param>
  *                <param-name>font-src</param-name>
  *                <param-value>'self'</param-value>
- *             </init-param>   
+ *             </init-param>
  *            <init-param>
  *                <param-name>object-src</param-name>
  *                <param-value>'self'</param-value>
- *             </init-param>  
+ *             </init-param>
  *            <init-param>
  *                <param-name>media-src</param-name>
  *                <param-value>'self'</param-value>
- *             </init-param> 
+ *             </init-param>
  *            <init-param>
  *                <param-name>frame-src</param-name>
  *                <param-value>'self'</param-value>
- *             </init-param> 
+ *             </init-param>
  *         </filter>
- *         
- *         <filter-mapping> 
+ *
+ *         <filter-mapping>
  *            <filter-name>ContentSecurityPolicyFilter</filter-name>
  *             <url-pattern>/*</url-pattern>
  *         </filter-mapping>
- *         
- *  @author Ronald Ploeger 
+ *
+ *  @author Ronald Ploeger
  */
 public class ContentSecurityPolicyFilter implements Filter {
     private static final Logger logger = LoggerFactory.getLogger(ContentSecurityPolicyFilter.class);
@@ -104,14 +100,13 @@ public class ContentSecurityPolicyFilter implements Filter {
 
     /** Instruct the browser to only send reports (does not block anything) */
     private static final String REPORT_ONLY = "report-only";
-    /** The default-src is the default policy for loading content such as JavaScript, Images, CSS, Font's, AJAX requests, Frames, HTML5 Media */
     /** Instructs the browser to POST a reports of policy failures to this URI */
     public static final String REPORT_URI = "report-uri";
-    /** 
-     * Enables a sandbox for the requested resource similar to the iframe sandbox attribute. 
-     * The sandbox applies a same origin policy, prevents popups, plugins and script execution is blocked. 
-     * You can keep the sandbox value empty to keep all restrictions in place, or add values: 
-     * allow-forms allow-same-origin allow-scripts, and allow-top-navigation 
+    /**
+     * Enables a sandbox for the requested resource similar to the iframe sandbox attribute.
+     * The sandbox applies a same origin policy, prevents popups, plugins and script execution is blocked.
+     * You can keep the sandbox value empty to keep all restrictions in place, or add values:
+     * allow-forms allow-same-origin allow-scripts, and allow-top-navigation
      */
     public static final String SANDBOX = "sandbox";
     /** The default policy for loading content such as JavaScript, Images, CSS, Font's, AJAX requests, Frames, HTML5 Media */
@@ -154,11 +149,11 @@ public class ContentSecurityPolicyFilter implements Filter {
         reportUri = getParameterValue(filterConfig, REPORT_URI);
         sandbox = getParameterValue(filterConfig, SANDBOX);
         defaultSrc = getParameterValue(filterConfig, DEFAULT_SRC, KEYWORD_NONE);
-        imgSrc = getParameterValue(filterConfig, IMG_SRC, KEYWORD_SELF);
-        scriptSrc = getParameterValue(filterConfig, SCRIPT_SRC, KEYWORD_SELF);
-        styleSrc = getParameterValue(filterConfig, STYLE_SRC, KEYWORD_SELF);
+        imgSrc = getParameterValue(filterConfig, IMG_SRC);
+        scriptSrc = getParameterValue(filterConfig, SCRIPT_SRC);
+        styleSrc = getParameterValue(filterConfig, STYLE_SRC);
         fontSrc = getParameterValue(filterConfig, FONT_SRC);
-        connectSrc = getParameterValue(filterConfig, CONNECT_SRC, KEYWORD_SELF);
+        connectSrc = getParameterValue(filterConfig, CONNECT_SRC);
         objectSrc = getParameterValue(filterConfig, OBJECT_SRC);
         mediaSrc = getParameterValue(filterConfig, MEDIA_SRC);
         frameSrc = getParameterValue(filterConfig, FRAME_SRC);

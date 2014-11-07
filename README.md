@@ -11,7 +11,7 @@ Also see:
 
 Normally you will only need a limited number or none of the init parameters. If no init parameter is defined the Header will look like this:
 
-    Content-Security-Policy = default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'
+    Content-Security-Policy = default-src 'none'
 
 Here is an example full configuration of the ContentSecurityPolicyFilter. 
  
@@ -43,22 +43,18 @@ Here is an example full configuration of the ContentSecurityPolicyFilter.
                <param-value>'none'</param-value>
             </init-param>
            <init-param>
-               <!-- If not specified the default is 'self' -->
                <param-name>img-src</param-name>
                 <param-value>http://*.example.com</param-value>
             </init-param>
            <init-param>
-               <!-- If not specified the default is 'self' -->
                <param-name>script-src</param-name>
                <param-value>'self' js.example.com</param-value>
             </init-param>
            <init-param>
-               <!-- If not specified the default is 'self' -->
                <param-name>style-src</param-name>
                <param-value>'self'</param-value>
             </init-param>  
            <init-param>
-               <!-- If not specified the default is 'self' -->
                <param-name>connect-src</param-name>
                <param-value>'self'</param-value>
             </init-param> 

@@ -31,7 +31,7 @@ import org.mockito.ArgumentCaptor;
 
 @RunWith(JUnit4.class)
 public class ContentSecurityPolicyFilterTest {
-    private static final String DEFAULT_HEADER_VALUE = "default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'";
+    private static final String DEFAULT_HEADER_VALUE = "default-src 'none'";
     private static final String REPORT_URL = "/testReportUrl";
 
     private ContentSecurityPolicyFilter contentSecurityPolicyFilter;
@@ -67,7 +67,7 @@ public class ContentSecurityPolicyFilterTest {
         // - WHEN -
         contentSecurityPolicyFilter.doFilter(request, response, filterChain);
 
-        // - THEN -  
+        // - THEN -
         assertHeader(CONTENT_SECURITY_POLICY_HEADER, "default-src 'self'");
     }
 
@@ -79,7 +79,7 @@ public class ContentSecurityPolicyFilterTest {
         // - WHEN -
         contentSecurityPolicyFilter.doFilter(request, response, filterChain);
 
-        // - THEN -  
+        // - THEN -
         assertHeader(CONTENT_SECURITY_POLICY_HEADER, "default-src 'self'; img-src static.example.com");
     }
 
@@ -91,9 +91,8 @@ public class ContentSecurityPolicyFilterTest {
         // - WHEN -
         contentSecurityPolicyFilter.doFilter(request, response, filterChain);
 
-        // - THEN -  
-        assertHeader(CONTENT_SECURITY_POLICY_HEADER,
-                "default-src 'none'; img-src 'self'; script-src 'self' js.example.com; style-src 'self'; connect-src 'self'");
+        // - THEN -
+        assertHeader(CONTENT_SECURITY_POLICY_HEADER, "default-src 'none'; script-src 'self' js.example.com");
     }
 
     @Test
@@ -104,7 +103,7 @@ public class ContentSecurityPolicyFilterTest {
         // - WHEN -
         contentSecurityPolicyFilter.doFilter(request, response, filterChain);
 
-        // - THEN -  
+        // - THEN -
         assertHeader(CONTENT_SECURITY_POLICY_HEADER, "default-src 'self'; media-src static.example.com");
     }
 
@@ -116,7 +115,7 @@ public class ContentSecurityPolicyFilterTest {
         // - WHEN -
         contentSecurityPolicyFilter.doFilter(request, response, filterChain);
 
-        // - THEN -  
+        // - THEN -
         assertHeader(CONTENT_SECURITY_POLICY_REPORT_ONLY_HEADER, DEFAULT_HEADER_VALUE + "; report-uri " + REPORT_URL);
     }
 
@@ -128,7 +127,7 @@ public class ContentSecurityPolicyFilterTest {
         // - WHEN -
         contentSecurityPolicyFilter.doFilter(request, response, filterChain);
 
-        // - THEN -  
+        // - THEN -
         assertHeader(CONTENT_SECURITY_POLICY_HEADER, DEFAULT_HEADER_VALUE + "; report-uri " + REPORT_URL);
     }
 
@@ -140,7 +139,7 @@ public class ContentSecurityPolicyFilterTest {
         // - WHEN -
         contentSecurityPolicyFilter.doFilter(request, response, filterChain);
 
-        // - THEN -  
+        // - THEN -
         assertHeader(CONTENT_SECURITY_POLICY_HEADER, DEFAULT_HEADER_VALUE + "; " + SANDBOX);
     }
 
@@ -152,7 +151,7 @@ public class ContentSecurityPolicyFilterTest {
         // - WHEN -
         contentSecurityPolicyFilter.doFilter(request, response, filterChain);
 
-        // - THEN -  
+        // - THEN -
         assertHeader(CONTENT_SECURITY_POLICY_HEADER, DEFAULT_HEADER_VALUE + "; " + SANDBOX + " allow-scripts");
     }
 
